@@ -1482,6 +1482,7 @@ namespace PadForge.Services
                 if (!Guid.TryParse(deviceGuid, out var g)) return defaultTuning;
                 return gyroTuningSnapshot.Get((g, slotIndex));
             };
+            PadForge.Engine.Common.Mapping.SourceEvaluator.GyroStickCompanionProvider = InputManager.FindGyroStickCompanion;
 
             // Stick-position provider for Easy Aim gating. The gyro reader
             // passes its slotIndex and the side it needs (issue #120: true =
@@ -2683,6 +2684,7 @@ namespace PadForge.Services
                 PadForge.Engine.Common.Mapping.SourceCoercion.GyroBiasProvider = null;
                 PadForge.Engine.Common.Mapping.SourceCoercion.GyroAuxBiasProvider = null;
                 PadForge.Engine.Common.Mapping.SourceCoercion.GyroTuningProvider = null;
+                PadForge.Engine.Common.Mapping.SourceEvaluator.GyroStickCompanionProvider = null;
                 PadForge.Engine.Common.Mapping.SourceCoercion.SlotStickDeflectionProvider = null;
                 PadForge.Engine.Common.Mapping.SourceCoercion.GravityProvider = null;
                 PadForge.Engine.Common.Mapping.SourceCoercion.GyroTiltGravityProvider = null;
@@ -4421,6 +4423,7 @@ namespace PadForge.Services
             float dz = TryParseFloatPs(ps.GyroDeadZoneDegPerSec, 0f);
             if (Math.Abs(dz - 3f) > 0.0001f)
                 AddToken(parts, "DZ " + dz.ToString("0.#", ic) + "°/s");
+            AddPctToken(parts, "MIN", ps.GyroMinimumOutput, 0f);
             float tight = TryParseFloatPs(ps.GyroTighteningThresholdDegPerSec, 0f);
             if (Math.Abs(tight - 3f) > 0.0001f)
                 AddToken(parts, "TIGHT " + tight.ToString("0.#", ic));
@@ -6672,6 +6675,7 @@ namespace PadForge.Services
             ps.GyroSensitivityH = padVm.GyroSensitivityH.ToString("F2", ic);
             ps.GyroSensitivityV = padVm.GyroSensitivityV.ToString("F2", ic);
             ps.GyroDeadZoneDegPerSec = padVm.GyroDeadZoneDegPerSec.ToString("F1", ic);
+            ps.GyroMinimumOutput = padVm.GyroMinimumOutput.ToString("F1", ic);
             ps.GyroSmoothingAlpha = padVm.GyroSmoothingAlpha.ToString("F2", ic);
             ps.GyroAcceleration = padVm.GyroAcceleration.ToString("F2", ic);
             ps.GyroOutputCurve = padVm.GyroOutputCurve ?? "Linear";
@@ -7078,6 +7082,7 @@ namespace PadForge.Services
             padVm.GyroSensitivityH = TryParseDouble(ps.GyroSensitivityH, 1.0);
             padVm.GyroSensitivityV = TryParseDouble(ps.GyroSensitivityV, 1.0);
             padVm.GyroDeadZoneDegPerSec = TryParseDouble(ps.GyroDeadZoneDegPerSec, 3.0);
+            padVm.GyroMinimumOutput = TryParseDouble(ps.GyroMinimumOutput, 0);
             padVm.GyroSmoothingAlpha = TryParseDouble(ps.GyroSmoothingAlpha, 0);
             padVm.GyroAcceleration = TryParseDouble(ps.GyroAcceleration, 0);
             padVm.GyroOutputCurve = string.IsNullOrEmpty(ps.GyroOutputCurve) ? "Linear" : ps.GyroOutputCurve;
@@ -7592,6 +7597,7 @@ namespace PadForge.Services
                 SensH = TryParseFloatPs(ps.GyroSensitivityH, 1f),
                 SensV = TryParseFloatPs(ps.GyroSensitivityV, 1f),
                 DeadZoneRadPerSec = TryParseFloatPs(ps.GyroDeadZoneDegPerSec, 0f) * DegToRad,
+                MinimumOutput01 = Math.Clamp(TryParseFloatPs(ps.GyroMinimumOutput, 0f), 0f, 100f) / 100f,
                 SmoothingAlpha = TryParseFloatPs(ps.GyroSmoothingAlpha, 0f),
                 Acceleration = TryParseFloatPs(ps.GyroAcceleration, 0f),
                 OutputCurve = ps.GyroOutputCurve ?? "Linear",

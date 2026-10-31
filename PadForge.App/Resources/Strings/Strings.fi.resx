@@ -4624,4 +4624,7 @@ Haluatko, että PadForge poistaa niiden asennuksen nyt? Tämä vaatii järjestel
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0}: {1}, kun painettuna</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0}: {1}, kunnes pysäytetään</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Lopeta liipaisintehoste: {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Lähdön vähimmäisarvo</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Gyron kulmanopeus vasemman/oikean sauvan X/Y-akseleille: gyron kuolleen alueen jälkeen aktiivinen lähtö skaalataan tästä vähimmäisarvosta 100%:iin. Nolla pysyy nollana; muut lähtötyypit eivät muutu. Lähteiden yhdistäminen ja sauvan vasteen muotoilu voivat muuttaa lopullista lähtöä.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Palauta lähdön vähimmäisarvo</value></data>
 </root>

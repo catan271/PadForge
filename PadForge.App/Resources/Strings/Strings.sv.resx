@@ -4624,4 +4624,7 @@ Vill du att PadForge avinstallerar dem nu? Detta kräver förhöjd behörighet o
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} på {1} medan den hålls ned</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} på {1} tills den stoppas</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Stoppa avtryckareffekt på {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Minsta utdatavärde</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Gyrohastighet till vänster/höger spaks X/Y: efter gyrots dödzon skalas aktiva utdata från detta minimum till 100%. Noll förblir noll; andra utdatatyper ändras inte. Kombination av källor och spakens responskurva kan ändra slutliga utdata.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Återställ minsta utdatavärde</value></data>
 </root>

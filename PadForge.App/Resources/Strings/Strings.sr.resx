@@ -4624,4 +4624,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0}, {1}, док се држи</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0}, {1}, док се не заустави</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Заустави ефекат окидача: {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Минимална излазна вредност</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Брзина жироскопа на X/Y леве/десне палице: после мртве зоне активни излаз се скалира од овог минимума до 100%. Нула остаје нула; друге врсте излаза се не мењају. Комбиновање извора и обликовање одзива палице могу променити коначни излаз.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Ресетуј минималну излазну вредност</value></data>
 </root>

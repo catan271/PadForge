@@ -4624,4 +4624,7 @@ Vai vēlaties, lai PadForge tos tagad atinstalē? Tam nepieciešamas paaugstinā
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0}, {1}, kamēr tiek turēts</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0}, {1}, līdz apturēšanai</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Apturēt mēlītes efektu: {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Minimālā izvades vērtība</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Žiroskopa griešanās ātrums uz kreisās/labās sviras X/Y: pēc žiroskopa nejutības zonas aktīvā izvade tiek mērogota no šī minimuma līdz 100%. Nulle paliek nulle; citi izvades veidi nemainās. Avotu apvienošana un sviras reakcijas veidošana var mainīt gala izvadi.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Atiestatīt minimālo izvades vērtību</value></data>
 </root>

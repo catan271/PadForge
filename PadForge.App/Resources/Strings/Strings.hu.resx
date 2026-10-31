@@ -4624,4 +4624,7 @@ Szeretné, hogy a PadForge most eltávolítsa őket? Ehhez rendszergazdai jogosu
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0}, ravasz: {1}, amíg nyomva van</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0}, ravasz: {1}, leállításig</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Ravaszhatás leállítása: {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Minimális kimeneti érték</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Giroszkóp-szögsebesség a bal/jobb kar X/Y tengelyére: a giroszkóp holtzónája után az aktív kimenet ettől a minimumtól 100%-ig skálázódik. A nulla nulla marad; más kimenettípusok nem változnak. A források kombinálása és a kar válaszgörbéje módosíthatja a végső kimenetet.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Minimális kimeneti érték visszaállítása</value></data>
 </root>

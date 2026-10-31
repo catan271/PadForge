@@ -4624,4 +4624,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{1} پر {0}، دبائے رکھنے تک</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{1} پر {0}، روکے جانے تک</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>{0} پر ٹرگر ایفیکٹ روکیں</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>کم از کم آؤٹ پٹ قدر</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>جائرو کی گردشی رفتار سے بائیں/دائیں اسٹک کے X/Y تک: جائرو ڈیڈ زون کے بعد فعال آؤٹ پٹ اس کم از کم قدر سے 100% تک دوبارہ اسکیل ہوتا ہے۔ صفر، صفر ہی رہتا ہے؛ آؤٹ پٹ کی دوسری اقسام نہیں بدلتیں۔ ذرائع کا امتزاج اور اسٹک کے ردعمل کی تشکیل حتمی آؤٹ پٹ بدل سکتے ہیں۔</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>کم از کم آؤٹ پٹ قدر ری سیٹ کریں</value></data>
 </root>

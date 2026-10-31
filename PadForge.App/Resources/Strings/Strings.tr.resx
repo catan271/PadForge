@@ -4624,4 +4624,7 @@ PadForge bunları şimdi kaldırsın mı? Bu işlem yönetici izni gerektirir ve
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0}, {1} üzerinde basılı tutulduğu sürece</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0}, {1} üzerinde durdurulana kadar</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>{0} üzerindeki tetik efektini durdur</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Minimum çıkış değeri</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Jiroskop dönüş hızından sol/sağ çubuğun X/Y eksenlerine: jiroskop ölü bölgesinden sonra etkin çıkış bu minimumdan 100% değerine yeniden ölçeklenir. Sıfır sıfır kalır; diğer çıkış türleri değişmez. Kaynak birleştirme ve çubuk tepki biçimlendirmesi son çıkışı değiştirebilir.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Minimum çıkış değerini sıfırla</value></data>
 </root>

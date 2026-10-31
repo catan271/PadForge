@@ -4624,4 +4624,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{1}: {0} при удержании</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{1}: {0} до остановки</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Остановить эффект триггера: {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Минимальное выходное значение</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Скорость гироскопа на X/Y левого/правого стика: после мёртвой зоны активный выход масштабируется от этого минимума до 100%. Ноль остаётся нулём; другие типы выхода не меняются. Объединение источников и настройка отклика стика могут изменить итоговый выход.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Сбросить минимальное выходное значение</value></data>
 </root>

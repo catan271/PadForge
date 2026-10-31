@@ -4569,4 +4569,7 @@ Deseja que o PadForge os desinstale agora? Isso exige elevação e pode levar um
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} em {1} enquanto segurado</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} em {1} até ser interrompido</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Parar efeito de gatilho em {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Valor mínimo de saída</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Velocidade do giroscópio para X/Y do analógico esquerdo/direito: após a zona morta, a saída ativa é redimensionada deste mínimo até 100%. Zero continua zero; os outros tipos de saída não mudam. A combinação de fontes e o ajuste do analógico podem alterar a saída final.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Redefinir valor mínimo de saída</value></data>
 </root>

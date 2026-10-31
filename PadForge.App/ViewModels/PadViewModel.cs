@@ -3420,6 +3420,13 @@ namespace PadForge.ViewModels
             set => SetProperty(ref _gyroDeadZoneDegPerSec, Math.Clamp(value, 0, 30));
         }
 
+        private double _gyroMinimumOutput;
+        public double GyroMinimumOutput
+        {
+            get => _gyroMinimumOutput;
+            set => SetProperty(ref _gyroMinimumOutput, double.IsFinite(value) ? Math.Clamp(value, 0, 100) : 0);
+        }
+
         private double _gyroSmoothingAlpha;
         public double GyroSmoothingAlpha
         {
@@ -4029,6 +4036,10 @@ namespace PadForge.ViewModels
         public RelayCommand ResetGyroDeadZoneCommand =>
             _resetGyroDeadZoneCommand ??= new RelayCommand(() => GyroDeadZoneDegPerSec = 3.0);
 
+        private RelayCommand _resetGyroMinimumOutputCommand;
+        public RelayCommand ResetGyroMinimumOutputCommand =>
+            _resetGyroMinimumOutputCommand ??= new RelayCommand(() => GyroMinimumOutput = 0);
+
         private RelayCommand _resetGyroTighteningCommand;
         public RelayCommand ResetGyroTighteningCommand =>
             _resetGyroTighteningCommand ??= new RelayCommand(() => GyroTighteningThresholdDegPerSec = 3.0);
@@ -4142,6 +4153,7 @@ namespace PadForge.ViewModels
             _resetGyroResponseCardCommand ??= new RelayCommand(() =>
             {
                 GyroDeadZoneDegPerSec = 3.0;
+                GyroMinimumOutput = 0;
                 GyroTighteningThresholdDegPerSec = 3.0;
                 GyroSmoothingThresholdDegPerSec = 8.0;
                 GyroSmoothingWindowMs = 50;

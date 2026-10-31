@@ -4595,4 +4595,7 @@ Wil je dat PadForge ze nu verwijdert? Hiervoor zijn verhoogde rechten nodig en h
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} op {1} zolang ingedrukt</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} op {1} tot gestopt</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Triggereffect stoppen op {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Minimale uitvoerwaarde</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Gyrosnelheid naar X/Y van de linker-/rechterstick: na de dode zone wordt actieve uitvoer herschaald van dit minimum tot 100%. Nul blijft nul; andere uitvoertypen blijven ongewijzigd. Broncombinatie en stickrespons kunnen de uiteindelijke uitvoer veranderen.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Minimale uitvoerwaarde herstellen</value></data>
 </root>

@@ -145,17 +145,14 @@ namespace PadForge.Tests
             });
         }
 
-        /// <summary>Horizontal stays on the yaw window on purpose: it is the
-        /// yaw-equivalent blend, meant to replace a yaw row rather than sit
-        /// beside one. The legacy lane says so, and this keeps the fix from
-        /// quietly splitting it too.</summary>
+        /// <summary>With pure yaw input both filters should agree, even
+        /// though Horizontal needs its own history for mixed yaw/roll.</summary>
         [Fact]
-        public void HorizontalKeepsSharingTheYawWindow()
+        public void HorizontalAndYawAgreeForPureYaw()
         {
             WithTuning(() =>
             {
-                // Pure yaw, no roll, so the blend and the yaw row agree on the
-                // value and sharing is the correct, intended outcome.
+                // Pure yaw, no roll, so the blend and the yaw row agree.
                 var oldTuning = SourceCoercion.GyroTuningProvider;
                 try
                 {

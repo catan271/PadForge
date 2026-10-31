@@ -157,9 +157,8 @@ namespace PadForge.Tests
             Assert.Equal(0f, y);
         }
 
-        /// <summary>Gyro Horizontal is the yaw+roll auto-blend: it picks
-        /// whichever of the two is turning faster and reports it on the yaw
-        /// lane. It therefore has to carry yaw's sign, or the same physical
+        /// <summary>Gyro Horizontal combines yaw with sign-corrected roll
+        /// on the yaw lane. It therefore has to carry yaw's sign, or the same physical
         /// turn drives the cursor one way through "Gyro Yaw" and the other
         /// through "Gyro Horizontal".</summary>
         private static CustomInputState StateWithRoll(float degPerSec)
@@ -197,7 +196,7 @@ namespace PadForge.Tests
         [Fact]
         public void GyroHorizontal_KeepsOneDirection_WhicheverAxisDominates()
         {
-            // The blend picks the faster of yaw and roll. A turn that is
+            // The blend adds the sign-corrected yaw and roll. A turn that is
             // mostly yaw and the SAME turn once roll overtakes it must not
             // flip the cursor: that mid-motion reversal is what a raw blend
             // produced, and it is the thing that felt broken.

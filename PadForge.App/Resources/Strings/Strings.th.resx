@@ -4624,4 +4624,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} บน{1} ขณะกดค้าง</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} บน{1} จนกว่าจะหยุด</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>หยุดเอฟเฟกต์ทริกเกอร์บน{0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>ค่าเอาต์พุตขั้นต่ำ</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>อัตราการหมุนไจโรไปยัง X/Y ของสติ๊กซ้าย/ขวา: หลังพ้นเดดโซนไจโร เอาต์พุตที่ทำงานจะถูกปรับสเกลจากค่าขั้นต่ำนี้ถึง 100% ศูนย์ยังคงเป็นศูนย์ และเอาต์พุตประเภทอื่นไม่เปลี่ยน การรวมแหล่งสัญญาณและการปรับการตอบสนองของสติ๊กอาจเปลี่ยนเอาต์พุตสุดท้ายได้</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>รีเซ็ตค่าเอาต์พุตขั้นต่ำ</value></data>
 </root>

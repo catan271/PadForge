@@ -4624,4 +4624,7 @@ Viltu að PadForge fjarlægi þá núna? Þetta krefst stjórnandaréttinda og g
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} á {1} meðan haldið er inni</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} á {1} þar til stöðvað</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Stöðva gikkáhrif á {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Lágmarksúttaksgildi</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Snúningshraði gírós á X/Y vinstri/hægri stýripinna: eftir dauðasvæði gírósins er virkt úttak kvarðað frá þessu lágmarki að 100%. Núll helst núll; aðrar úttaksgerðir breytast ekki. Samsetning inntaka og mótun stýripinna geta breytt endanlegu úttaki.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Endurstilla lágmarksúttaksgildi</value></data>
 </root>

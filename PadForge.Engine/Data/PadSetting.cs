@@ -612,6 +612,10 @@ namespace PadForge.Engine.Data
         /// with the threshold subtracted. Default 3°/s.</summary>
         [XmlElement] public string GyroDeadZoneDegPerSec { get; set; } = "3.0";
 
+        /// <summary>Minimum rate-gyro stick magnitude, percent (0 = off).
+        /// Paired X/Y contributions are rescaled together to preserve direction.</summary>
+        [XmlElement] public string GyroMinimumOutput { get; set; } = "0";
+
         /// <summary>Single-pole EMA smoothing alpha (0 = off, 0.95 = max).
         /// Applied to the bias-subtracted rate before deadzone.</summary>
         [XmlElement] public string GyroSmoothingAlpha { get; set; } = "0";
@@ -1683,6 +1687,7 @@ namespace PadForge.Engine.Data
             sb.Append(GyroSensitivityH); sb.Append('|');
             sb.Append(GyroSensitivityV); sb.Append('|');
             sb.Append(GyroDeadZoneDegPerSec); sb.Append('|');
+            sb.Append(GyroMinimumOutput); sb.Append('|');
             sb.Append(GyroSmoothingAlpha); sb.Append('|');
             sb.Append(GyroAcceleration); sb.Append('|');
             sb.Append(GyroOutputCurve); sb.Append('|');
@@ -2399,6 +2404,7 @@ namespace PadForge.Engine.Data
             // of what the XML round-tripped through the XmlSerializer.
             nameof(GyroSensitivityH), nameof(GyroSensitivityV),
             nameof(GyroDeadZoneDegPerSec), nameof(GyroSmoothingAlpha),
+            nameof(GyroMinimumOutput),
             nameof(GyroAcceleration), nameof(GyroOutputCurve),
             nameof(GyroSensitivityUnits), nameof(GyroEasyAimStickThreshold),
             nameof(GyroEngageStickSide), nameof(GyroEngageStickDirection),

@@ -4624,4 +4624,7 @@ Chcete, aby ich PadForge teraz odinštaloval? Vyžaduje to oprávnenia správcu 
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} ({1}, kým je držaná)</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} ({1}, do zastavenia)</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Zastaviť efekt spúšte: {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Minimálna výstupná hodnota</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Rýchlosť gyroskopu na X/Y ľavej/pravej páčky: za mŕtvou zónou sa aktívny výstup prepočíta od tohto minima po 100%. Nula zostáva nulou; ostatné typy výstupu sa nemenia. Kombinovanie zdrojov a tvarovanie odozvy páčky môžu zmeniť konečný výstup.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Obnoviť minimálnu výstupnú hodnotu</value></data>
 </root>

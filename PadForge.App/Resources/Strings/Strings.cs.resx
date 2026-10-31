@@ -4624,4 +4624,7 @@ Má je PadForge teď odinstalovat? Vyžaduje to zvýšená oprávnění a může
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{1}: {0}, dokud je držen</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{1}: {0}, do zastavení</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Zastavit efekt spouště: {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Minimální výstupní hodnota</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Rychlost gyroskopu na X/Y levé nebo pravé páčky: za mrtvou zónou gyroskopu se aktivní výstup přepočítá z tohoto minima na 100%. Nula zůstává nulou; ostatní typy výstupu se nemění. Kombinace zdrojů a tvarování odezvy páčky mohou změnit konečný výstup.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Obnovit minimální výstupní hodnotu</value></data>
 </root>

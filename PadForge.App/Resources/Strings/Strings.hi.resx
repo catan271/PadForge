@@ -4624,4 +4624,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{1} पर {0}, दबे रहने तक</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{1} पर {0}, रोके जाने तक</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>{0} पर ट्रिगर इफ़ेक्ट रोकें</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>न्यूनतम आउटपुट मान</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>जाइरो की घूर्णन दर से बाएँ/दाएँ स्टिक के X/Y तक: जाइरो डेडज़ोन के बाद सक्रिय आउटपुट इस न्यूनतम से 100% तक पुनः स्केल होता है। शून्य शून्य ही रहता है; अन्य आउटपुट प्रकार नहीं बदलते। स्रोतों का संयोजन और स्टिक की प्रतिक्रिया का आकार अंतिम आउटपुट बदल सकते हैं।</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>न्यूनतम आउटपुट मान रीसेट करें</value></data>
 </root>

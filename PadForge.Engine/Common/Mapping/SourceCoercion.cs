@@ -239,6 +239,7 @@ namespace PadForge.Engine.Common.Mapping
             public float SensH;
             public float SensV;
             public float DeadZoneRadPerSec;
+            public float MinimumOutput01;            // rate-gyro stick contribution only, 0 = off
             public float SmoothingAlpha;             // legacy EMA (unused when the dual-threshold pair is active)
             public float Acceleration;
             public string OutputCurve;
@@ -277,8 +278,8 @@ namespace PadForge.Engine.Common.Mapping
             public string AimEngageDevice;
             public string AimEngageDescriptor;
 
-            // per-axis invert toggles (#321: yaw and roll split; the
-            // Horizontal blend follows whichever component is dominant)
+            // Per-axis invert toggles; Local Horizontal combines the
+            // independently inverted yaw and roll contributions.
             public bool InvertPitch;
             public bool InvertYaw;
             public bool InvertRoll;
@@ -723,7 +724,7 @@ namespace PadForge.Engine.Common.Mapping
         /// resolution.</summary>
         public const float BalanceMaxKg = 150f;
 
-        private static GyroTuning GetGyroTuning(string deviceGuid, int slotIndex)
+        internal static GyroTuning GetGyroTuning(string deviceGuid, int slotIndex)
         {
             var provider = GyroTuningProvider;
             if (provider == null || string.IsNullOrEmpty(deviceGuid))
@@ -2117,9 +2118,8 @@ namespace PadForge.Engine.Common.Mapping
             return -1;
         }
 
-        /// <summary>True for the <c>Gyro Horizontal</c> auto-blend
-        /// descriptor — caller reads BOTH yaw and roll and picks the
-        /// dominant axis with sign. Steam's Handheld+Roll style: works
+        /// <summary>True for the <c>Gyro Horizontal</c> blend
+        /// descriptor — caller combines yaw and sign-corrected roll. Works
         /// whether the user grips the controller upright (yaw drives
         /// horizontal aim) or flat (roll drives it).</summary>
         private static bool IsHorizontalBlendDescriptor(string descriptor)
@@ -4009,12 +4009,8 @@ namespace PadForge.Engine.Common.Mapping
 
             // ─── Space projection ────────────────────────────────
             float yaw, pitch;
-            // Which component the Horizontal blend used THIS sample, so
-            // the invert tail can honor that component's flag (#321).
-            // Outside Local space the projection is a yaw-aim signal and
-            // this stays false.
-            bool horizRollDominant = false;
             string space = tuning.Space ?? "Local";
+            bool localHorizontal = isHorizontal && space != "Player" && space != "World";
             if (space == "Player")
             {
                 var grav = ReadGravity(deviceGuid, slotIndex, aux);
@@ -4030,29 +4026,11 @@ namespace PadForge.Engine.Common.Mapping
             else // Local
             {
                 pitch = gPitch;
-                // ROLL ENTERS THE YAW LANE NEGATED. Both are horizontal-aim
-                // sources and they have to agree, or the same turn drives the
-                // view one way through yaw and the other through roll, and
-                // the Horizontal blend flips direction the moment roll
-                // overtakes yaw.
-                //
-                // They do NOT agree raw. SDL's frame (SDL_sensor.h): +Z
-                // points toward the player and positive rotation is
-                // counter-clockwise seen from a positive location on the
-                // axis, so +roll tilts the controller's top to the LEFT while
-                // +yaw turns its nose to the LEFT. Those are opposite
-                // steering intents: tilting the top left banks you right the
-                // way leaning a wheel does, which is how it reads in the
-                // hand and how it was reported.
-                //
-                // Mapping path only. The passthrough / DSU chain is
-                // ShapePassthroughAxis and keeps SDL's native frame, which
-                // the motion-snapshot contract requires.
+                // Sum the sign-corrected steering contributions continuously;
+                // choosing the stronger raw axis reverses at the yaw/roll crossover.
+                // Invert each component before combining, never the winning axis.
                 if (isHorizontal)
-                {
-                    horizRollDominant = Math.Abs(gYaw) < Math.Abs(gRoll);
-                    yaw = horizRollDominant ? -gRoll : gYaw;
-                }
+                    yaw = (tuning.InvertYaw ? -gYaw : gYaw) - (tuning.InvertRoll ? -gRoll : gRoll);
                 else if (isRollSource)
                     yaw = -gRoll;
                 else
@@ -4073,7 +4051,8 @@ namespace PadForge.Engine.Common.Mapping
                 && GripAxis(tuning.Grip, 1).source == 1)
             {
                 float? compassCorr = CompassYawCorrectionProvider?.Invoke(deviceGuid);
-                if (compassCorr.HasValue) yaw += compassCorr.Value;
+                if (compassCorr.HasValue)
+                    yaw += localHorizontal && tuning.InvertYaw ? -compassCorr.Value : compassCorr.Value;
             }
 
             // ─── Smoothing (dual-threshold supersedes legacy EMA) ───
@@ -4081,45 +4060,22 @@ namespace PadForge.Engine.Common.Mapping
                 tuning.TighteningRadPerSec > 0f || tuning.SmoothingThresholdRadPerSec > 0f;
             if (useDualThreshold)
             {
-                // Channel 3 gives the R family its own ring: channel 0 is
-                // the fused bare family (the passthrough uses 1/2), and
-                // the key tuple is (guid, slot, aux, channel).
-                //
-                // A Roll row takes its own ring too (4 fused or left, 5
-                // right), the rule the legacy lane below and the
-                // passthrough above already follow. In Local space a Roll
-                // row carries roll in the yaw variable, so sharing the aim
-                // ring let whichever row ran last leave its sample in the
-                // window the other averages, for as long as the window is
-                // deep. Horizontal deliberately stays on the yaw ring: it
-                // is the yaw-equivalent blend, meant to replace a yaw row
-                // rather than sit beside one.
+                // Horizontal carries a yaw/roll blend, not plain yaw. Its own
+                // ring prevents a Pitch/Yaw row from overwriting that history.
                 (yaw, pitch) = ApplyDualThresholdSmoothing(
                     deviceGuid, slotIndex, yaw, pitch, tuning, aux,
-                    channel: isRollSource
+                    channel: isHorizontal ? (side == GyroSide.Right ? 7 : 6) : isRollSource
                         ? (side == GyroSide.Right ? 5 : 4)
                         : (side == GyroSide.Right ? 3 : 0));
             }
             else if (tuning.SmoothingAlpha > 0f)
             {
-                // v3.3 legacy EMA path, kept for back-compat when the
-                // user has a non-zero SmoothingAlpha and both v3.4
-                // thresholds at zero. A Roll source gets its own EMA lane
-                // (2, matching the passthrough path below): in Local space
-                // a Gyro Roll row and a Gyro Yaw row on the same
-                // (device, slot) would otherwise both key lane 1, and the
-                // per-frame seq gate would hand the second-evaluated row
-                // the first's smoothed value. Horizontal stays on lane 1
-                // deliberately: it is the yaw-equivalent blend, designed
-                // to replace a yaw row, not coexist with one.
-                // Lanes 0/1/2 primary, 3/4/5 aux (#252): the two sensors share a
-                // device GUID, so a shared lane hands one the other's value.
-                // Lanes 0/1/2 fused bare, 3/4/5 aux (#252), 6/7/8 the
-                // explicit right family (#271 item 6): three families on
-                // one device GUID, each with its own filter state.
+                // Channel 3 isolates Horizontal from plain yaw/pitch (0) and
+                // primary/aux passthrough (1/2), retaining sensor lane separation.
                 int laneBase = side == GyroSide.Left ? 3 : side == GyroSide.Right ? 6 : 0;
-                yaw   = ApplyGyroSmoothing(deviceGuid, slotIndex, laneBase + (isRollSource ? 2 : 1), yaw, tuning.SmoothingAlpha);
-                pitch = ApplyGyroSmoothing(deviceGuid, slotIndex, laneBase + 0, pitch, tuning.SmoothingAlpha);
+                int channel = isHorizontal ? 3 : 0;
+                yaw   = ApplyGyroSmoothing(deviceGuid, slotIndex, laneBase + (isRollSource ? 2 : 1), yaw, tuning.SmoothingAlpha, channel);
+                pitch = ApplyGyroSmoothing(deviceGuid, slotIndex, laneBase + 0, pitch, tuning.SmoothingAlpha, channel);
             }
 
             // In non-Local space, Gyro Roll source has no independent
@@ -4140,14 +4096,9 @@ namespace PadForge.Engine.Common.Mapping
             {
                 rate = ApplyDeadZone(yaw, tuning.DeadZoneRadPerSec)
                        * tuning.SensH * perSourceSens * rwc;
-                // The flag follows the SOURCE (#321): a roll row inverts
-                // on the roll toggle, a yaw row on the yaw toggle, and
-                // the Horizontal blend on whichever component it used
-                // this sample.
-                bool invert = isRollSource || horizRollDominant
-                    ? tuning.InvertRoll
-                    : tuning.InvertYaw;
-                if (invert) rate = -rate;
+                // Local Horizontal already inverted its two components.
+                bool invert = isRollSource ? tuning.InvertRoll : tuning.InvertYaw;
+                if (invert && !localHorizontal) rate = -rate;
             }
             return rate;
         }
