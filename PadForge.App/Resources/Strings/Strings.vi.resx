@@ -4624,4 +4624,7 @@ Bạn có muốn PadForge gỡ cài đặt chúng ngay bây giờ không? Việc
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} trên {1} khi đang giữ</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} trên {1} cho đến khi dừng</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Dừng hiệu ứng cò trên {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Giá trị đầu ra tối thiểu</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Tốc độ quay gyro sang X/Y của cần trái/phải: sau vùng chết gyro, đầu ra đang hoạt động được đổi thang từ mức tối thiểu này đến 100%. Số không vẫn là số không; các loại đầu ra khác không đổi. Việc kết hợp nguồn và định hình phản hồi cần có thể thay đổi đầu ra cuối cùng.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Đặt lại giá trị đầu ra tối thiểu</value></data>
 </root>

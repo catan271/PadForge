@@ -4575,4 +4575,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{1}に{0} (押している間)</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{1}に{0} (停止するまで)</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>{0}のトリガーエフェクトを停止</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>最小出力値</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>ジャイロの回転速度を左右スティックのX/Yに割り当てる場合、ジャイロのデッドゾーンを超えた出力をこの最小値から100%までに再スケーリングします。ゼロはゼロのままで、他の出力形式は変わりません。入力の合成やスティックの応答調整によって最終出力は変わる場合があります。</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>最小出力値をリセット</value></data>
 </root>

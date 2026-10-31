@@ -1515,6 +1515,7 @@ namespace PadForge
                         // Gyro tab — v3.3 + JoyShockMapper-canon fields all per-(device, slot).
                         nameof(PadViewModel.GyroSensitivityH) or nameof(PadViewModel.GyroSensitivityV) or
                         nameof(PadViewModel.GyroDeadZoneDegPerSec) or nameof(PadViewModel.GyroSmoothingAlpha) or
+                        nameof(PadViewModel.GyroMinimumOutput) or
                         nameof(PadViewModel.GyroAcceleration) or nameof(PadViewModel.GyroOutputCurve) or
                         nameof(PadViewModel.GyroSensitivityUnits) or nameof(PadViewModel.GyroEasyAimStickThreshold) or
                         nameof(PadViewModel.GyroSpace) or nameof(PadViewModel.MotionGrip) or

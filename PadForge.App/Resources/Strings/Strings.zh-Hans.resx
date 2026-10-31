@@ -4575,4 +4575,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{1} 上的{0}，按住期间</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{1} 上的{0}，直到停止</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>停止 {0} 上的扳机效果</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>最小输出值</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>将陀螺仪转速映射到左/右摇杆 X/Y 时，超过陀螺仪死区的有效输出会重新缩放到此最小值至 100% 的范围。零仍为零，其他输出类型不变。信号源组合和摇杆响应调整可能改变最终输出。</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>重置最小输出值</value></data>
 </root>

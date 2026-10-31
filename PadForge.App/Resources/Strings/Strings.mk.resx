@@ -4624,4 +4624,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} на {1} додека се држи</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} на {1} додека не се запре</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Запри ефект на тригер на {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Минимална излезна вредност</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Брзина на жироскопот кон X/Y на левата/десната палка: по мртвата зона, активниот излез се скалира од овој минимум до 100%. Нулата останува нула; другите видови излез не се менуваат. Комбинирањето извори и обликувањето на одзивот на палката можат да го променат крајниот излез.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Ресетирај ја минималната излезна вредност</value></data>
 </root>

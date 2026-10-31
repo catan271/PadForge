@@ -4575,4 +4575,7 @@ Voulez-vous que PadForge les désinstalle maintenant ? Cette opération nécessi
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} sur {1} tant que maintenu</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} sur {1} jusqu'à l'arrêt</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Arrêter l'effet de gâchette sur {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Valeur de sortie minimale</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Vitesse du gyroscope vers X/Y du stick gauche/droit : après la zone morte, la sortie active est redimensionnée de ce minimum à 100%. Zéro reste zéro ; les autres types de sortie sont inchangés. La combinaison des sources et la courbe du stick peuvent modifier la sortie finale.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Réinitialiser la valeur de sortie minimale</value></data>
 </root>

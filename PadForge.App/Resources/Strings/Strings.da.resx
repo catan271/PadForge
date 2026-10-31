@@ -4624,4 +4624,7 @@ Vil du have, at PadForge afinstallerer dem nu? Det kræver administratorrettighe
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} på {1}, mens den holdes nede</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} på {1}, indtil den stoppes</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Stop triggereffekt på {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Mindste outputværdi</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Gyrohastighed til venstre/højre styrepinds X/Y: efter gyroens dødzone skaleres aktivt output fra dette minimum til 100%. Nul forbliver nul; andre outputtyper er uændrede. Kombination af kilder og styrepindens responsformning kan ændre det endelige output.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Nulstil mindste outputværdi</value></data>
 </root>

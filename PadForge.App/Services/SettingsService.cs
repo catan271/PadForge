@@ -3714,6 +3714,7 @@ namespace PadForge.Services
                 padVm.GyroSensitivityH = TryParseDouble(ps.GyroSensitivityH, 1.0);
                 padVm.GyroSensitivityV = TryParseDouble(ps.GyroSensitivityV, 1.0);
                 padVm.GyroDeadZoneDegPerSec = TryParseDouble(ps.GyroDeadZoneDegPerSec, 3.0);
+                padVm.GyroMinimumOutput = TryParseDouble(ps.GyroMinimumOutput, 0);
                 padVm.GyroSmoothingAlpha = TryParseDouble(ps.GyroSmoothingAlpha, 0);
                 padVm.GyroAcceleration = TryParseDouble(ps.GyroAcceleration, 0);
                 padVm.GyroOutputCurve = string.IsNullOrEmpty(ps.GyroOutputCurve) ? "Linear" : ps.GyroOutputCurve;
@@ -5670,6 +5671,7 @@ namespace PadForge.Services
                     ps.GyroSensitivityH = padVm.GyroSensitivityH.ToString(ic);
                     ps.GyroSensitivityV = padVm.GyroSensitivityV.ToString(ic);
                     ps.GyroDeadZoneDegPerSec = padVm.GyroDeadZoneDegPerSec.ToString(ic);
+                    ps.GyroMinimumOutput = padVm.GyroMinimumOutput.ToString(ic);
                     ps.GyroSmoothingAlpha = padVm.GyroSmoothingAlpha.ToString(ic);
                     ps.GyroAcceleration = padVm.GyroAcceleration.ToString(ic);
                     ps.GyroOutputCurve = padVm.GyroOutputCurve ?? "Linear";

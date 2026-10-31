@@ -2835,6 +2835,9 @@ public class Strings : INotifyPropertyChanged
     public string Settings_GyroSensitivityV => Get("Settings_GyroSensitivityV");
     public string Settings_GyroSensitivityV_Tooltip => Get("Settings_GyroSensitivityV_Tooltip");
     public string Settings_GyroDeadZone => Get("Settings_GyroDeadZone");
+    public string Settings_GyroMinimumOutput => Get("Settings_GyroMinimumOutput");
+    public string Settings_GyroMinimumOutput_Tooltip => Get("Settings_GyroMinimumOutput_Tooltip");
+    public string Pad_ResetGyroMinimumOutput => Get("Pad_ResetGyroMinimumOutput");
     public string Settings_GyroDeadZone_Tooltip => Get("Settings_GyroDeadZone_Tooltip");
     public string Settings_GyroAcceleration => Get("Settings_GyroAcceleration");
     public string Settings_GyroAcceleration_Tooltip => Get("Settings_GyroAcceleration_Tooltip");

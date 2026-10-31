@@ -4624,4 +4624,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} روی {1} تا وقتی نگه داشته شود</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} روی {1} تا توقف</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>توقف اثر ماشه روی {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>حداقل مقدار خروجی</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>نرخ چرخش ژیروسکوپ به X/Y دسته چپ/راست: پس از ناحیه مرده ژیروسکوپ، خروجی فعال از این حداقل تا 100% مقیاس می‌شود. صفر همان صفر می‌ماند؛ سایر انواع خروجی تغییر نمی‌کنند. ترکیب منابع و شکل‌دهی پاسخ دسته می‌توانند خروجی نهایی را تغییر دهند.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>بازنشانی حداقل مقدار خروجی</value></data>
 </root>

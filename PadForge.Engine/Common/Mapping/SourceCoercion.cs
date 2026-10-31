@@ -239,6 +239,7 @@ namespace PadForge.Engine.Common.Mapping
             public float SensH;
             public float SensV;
             public float DeadZoneRadPerSec;
+            public float MinimumOutput01;            // rate-gyro stick contribution only, 0 = off
             public float SmoothingAlpha;             // legacy EMA (unused when the dual-threshold pair is active)
             public float Acceleration;
             public string OutputCurve;
@@ -5518,13 +5519,14 @@ namespace PadForge.Engine.Common.Mapping
 
         public static float EvaluateForBipolarAxisTarget(
             CustomInputState state, MappingSource src, int slotIndex = -1,
-            bool relativeTouchpad = false, string evaluatedDeviceGuid = null)
+            bool relativeTouchpad = false, string evaluatedDeviceGuid = null,
+            bool applyGyroMinimumOutput = false)
         {
             if (state == null || src == null) return 0f;
             using var placement = ReadingDevice(src, evaluatedDeviceGuid);
 
             float raw = ReadAsBipolar(state, src, slotIndex, relativeTouchpad,
-                EffectiveDeviceGuid(src, evaluatedDeviceGuid));
+                EffectiveDeviceGuid(src, evaluatedDeviceGuid), applyGyroMinimumOutput);
             // HalfAxis on a centered Axis source consumes Invert inside the
             // read as the half selector (lower half instead of upper),
             // mirroring the bool path, so the same row selects the same
@@ -6013,7 +6015,8 @@ namespace PadForge.Engine.Common.Mapping
             }
         }
 
-        private static float ReadAsBipolar(CustomInputState state, MappingSource src, int slotIndex, bool relativeTouchpad, string deviceGuid)
+        private static float ReadAsBipolar(CustomInputState state, MappingSource src, int slotIndex, bool relativeTouchpad, string deviceGuid,
+            bool applyGyroMinimumOutput)
         {
             string s = CanonicalDescriptor(src.Descriptor);
             if (string.IsNullOrEmpty(s)) return 0f;
@@ -6173,7 +6176,14 @@ namespace PadForge.Engine.Common.Mapping
                 // uses the touchpad-feel formula and runs before the EMA,
                 // the same order the touchpad chain applies.
                 v = ApplyPerSourceAccel(src, v);
-                return ApplyCurveRangeShaping(v, src);
+                v = ApplyCurveRangeShaping(v, src);
+                // Only stick targets opt in; keep zero and the mouse/trigger/motion lanes unchanged.
+                if (applyGyroMinimumOutput && v != 0f && float.IsFinite(tuning.MinimumOutput01) && tuning.MinimumOutput01 > 0f)
+                {
+                    float minimum = Math.Min(tuning.MinimumOutput01, 1f);
+                    v = MathF.CopySign(minimum + (1f - minimum) * Math.Min(Math.Abs(v), 1f), v);
+                }
+                return v;
             }
 
             if (s.StartsWith("Mouse Position ", StringComparison.Ordinal))

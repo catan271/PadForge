@@ -4624,4 +4624,7 @@ PadForge இப்போதே அவற்றை நிறுவல் நீ�
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{1}: {0}, பிடித்திருக்கும் வரை</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{1}: {0}, நிறுத்தும் வரை</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>டிரிகர் விளைவை நிறுத்து: {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>குறைந்தபட்ச வெளியீட்டு மதிப்பு</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>கைரோ சுழற்சி வேகத்திலிருந்து இடது/வலது ஸ்டிக் X/Y: கைரோ செயலற்ற மண்டலத்திற்குப் பிறகு செயலில் உள்ள வெளியீடு இந்தக் குறைந்தபட்சத்திலிருந்து 100% வரை மறுஅளவிடப்படும். பூஜ்ஜியம் பூஜ்ஜியமாகவே இருக்கும்; பிற வெளியீட்டு வகைகள் மாறாது. மூலங்களின் இணைப்பும் ஸ்டிக் பதில் வடிவமைப்பும் இறுதி வெளியீட்டை மாற்றலாம்.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>குறைந்தபட்ச வெளியீட்டு மதிப்பை மீட்டமை</value></data>
 </root>

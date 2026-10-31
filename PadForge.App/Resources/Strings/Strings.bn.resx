@@ -4624,4 +4624,7 @@ PadForge কি এখনই সেগুলো আনইনস্টল কর�
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{1}-এ {0}, ধরে রাখা পর্যন্ত</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{1}-এ {0}, থামানো পর্যন্ত</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>{0}-এ ট্রিগার ইফেক্ট থামান</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>সর্বনিম্ন আউটপুট মান</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>জাইরোর ঘূর্ণন হার থেকে বাম/ডান স্টিকের X/Y: জাইরো ডেডজোনের পরে সক্রিয় আউটপুট এই সর্বনিম্ন মান থেকে 100% পর্যন্ত পুনরায় স্কেল হয়। শূন্য শূন্যই থাকে; অন্য আউটপুটের ধরন অপরিবর্তিত থাকে। উৎসের সমন্বয় এবং স্টিকের প্রতিক্রিয়া গঠন চূড়ান্ত আউটপুট বদলাতে পারে।</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>সর্বনিম্ন আউটপুট মান রিসেট করুন</value></data>
 </root>

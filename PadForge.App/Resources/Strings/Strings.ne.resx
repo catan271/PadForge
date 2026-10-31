@@ -4624,4 +4624,7 @@ PadForge ले तिनलाई अहिले अनइन्स्टल �
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} {1} मा थिचिराखेसम्म</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} {1} मा रोकिएसम्म</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>{0} मा ट्रिगर प्रभाव रोक्नुहोस्</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>न्यूनतम आउटपुट मान</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>जाइरोको घुम्ने दरबाट बायाँ/दायाँ स्टिकको X/Y मा: जाइरो डेडजोनपछि सक्रिय आउटपुट यो न्यूनतमबाट 100% सम्म पुनः मापन हुन्छ। शून्य शून्य नै रहन्छ; अन्य आउटपुट प्रकार बदलिँदैनन्। स्रोतहरूको संयोजन र स्टिकको प्रतिक्रिया आकारले अन्तिम आउटपुट बदल्न सक्छन्।</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>न्यूनतम आउटपुट मान रिसेट गर्नुहोस्</value></data>
 </root>

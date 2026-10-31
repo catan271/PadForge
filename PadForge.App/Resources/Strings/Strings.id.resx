@@ -4624,4 +4624,7 @@ Apakah Anda ingin PadForge menghapus instalannya sekarang? Tindakan ini memerluk
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} pada {1} selama ditahan</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} pada {1} sampai dihentikan</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Hentikan efek pelatuk pada {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Nilai keluaran minimum</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Laju giroskop ke X/Y stik kiri/kanan: setelah zona mati giroskop, keluaran aktif diskalakan dari minimum ini hingga 100%. Nol tetap nol; jenis keluaran lain tidak berubah. Penggabungan sumber dan pembentukan respons stik dapat mengubah keluaran akhir.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Reset nilai keluaran minimum</value></data>
 </root>

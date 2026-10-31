@@ -1971,6 +1971,9 @@ A copy of the previous version is in this folder: {1}</value></data>
   <data name="Settings_GyroSensitivityV" xml:space="preserve"><value>Vertical Sensitivity</value></data>
   <data name="Settings_GyroSensitivityV_Tooltip" xml:space="preserve"><value>Scales the vertical (Pitch) gyro contribution to the output. Separate from horizontal so you can tune aim X and Y independently.</value></data>
   <data name="Settings_GyroDeadZone" xml:space="preserve"><value>Deadzone</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Minimum output value</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Rate gyro to Left/Right Stick X/Y: rescale active output from this minimum to 100% after the gyro deadzone. Zero stays zero; other output types are unchanged. Source combination and stick shaping can change the final output.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Reset minimum output value</value></data>
   <data name="Settings_GyroDeadZone_Tooltip" xml:space="preserve"><value>Minimum rotation rate (degrees per second) below which gyro output is treated as zero. Rejects at-rest hand tremor without snapping behavior. Rates past the threshold pass through with the threshold subtracted.</value></data>
   <data name="Settings_GyroAcceleration" xml:space="preserve"><value>Acceleration</value></data>
   <data name="Settings_GyroAcceleration_Tooltip" xml:space="preserve"><value>Rate-dependent gain. 0 = off (linear scaling). Higher values let slow movements pass through unchanged while amplifying fast movements. Useful for combining precision aim with quick turns.</value></data>

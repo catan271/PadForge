@@ -352,7 +352,9 @@ namespace PadForge.Engine.Common.Mapping
                     // "hold the controller tilted to keep turning" — the
                     // opposite of how gyro is supposed to feel (JSM
                     // MOUSE_JOYSTICK, Steam Input gyro→stick, Splatoon).
-                    float v = SourceCoercion.EvaluateForBipolarAxisTarget(state, src, slotIndex, relativeTouchpad, evaluatedDeviceGuid);
+                    bool stickTarget = target is "LeftThumbAxisX" or "LeftThumbAxisY" or "RightThumbAxisX" or "RightThumbAxisY";
+                    float v = SourceCoercion.EvaluateForBipolarAxisTarget(state, src, slotIndex, relativeTouchpad, evaluatedDeviceGuid,
+                        applyGyroMinimumOutput: stickTarget);
                     // Per-axis-frame sign correction — see ShouldFlipForAxisFrame.
                     // This is a SHARED seam (sticks, extended axes, KBM mouse,
                     // and the touchpad-output passthrough all reach it), so the

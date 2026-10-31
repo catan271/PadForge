@@ -4624,4 +4624,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0}, {1}, пакуль утрымліваецца</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0}, {1}, пакуль не спынена</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Спыніць эфект курка: {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Мінімальнае выхадное значэнне</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Хуткасць гіраскопа на X/Y левага або правага стыка: пасля мёртвай зоны актыўны выхад маштабуецца ад гэтага мінімуму да 100%. Нуль застаецца нулём; іншыя тыпы выхаду не змяняюцца. Аб'яднанне крыніц і апрацоўка стыка могуць змяніць канчатковы выхад.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Скінуць мінімальнае выхадное значэнне</value></data>
 </root>

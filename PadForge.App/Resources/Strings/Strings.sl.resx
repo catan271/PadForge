@@ -4624,4 +4624,7 @@ Ali želite, da jih PadForge zdaj odstrani? To zahteva skrbniške pravice in lah
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0}, sprožilec: {1}, med držanjem</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0}, sprožilec: {1}, do ustavitve</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Ustavi učinek sprožilca: {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Najmanjša izhodna vrednost</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Hitrost žiroskopa na X/Y leve/desne palice: po mrtvem območju se aktivni izhod preslika od tega minimuma do 100%. Nič ostane nič; druge vrste izhoda se ne spremenijo. Združevanje virov in oblikovanje odziva palice lahko spremenita končni izhod.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Ponastavi najmanjšo izhodno vrednost</value></data>
 </root>

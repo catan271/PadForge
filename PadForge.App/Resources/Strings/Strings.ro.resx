@@ -4624,4 +4624,7 @@ Doriți ca PadForge să le dezinstaleze acum? Este nevoie de drepturi de adminis
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} pe {1} cât timp este menținut</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} pe {1} până la oprire</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Oprire efect de trăgaci pe {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Valoare minimă de ieșire</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Viteza giroscopului către X/Y al manetei stângi/drepte: după zona moartă, ieșirea activă este scalată de la acest minim la 100%. Zero rămâne zero; celelalte tipuri de ieșire nu se schimbă. Combinarea surselor și modelarea răspunsului manetei pot schimba ieșirea finală.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Resetează valoarea minimă de ieșire</value></data>
 </root>

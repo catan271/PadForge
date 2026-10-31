@@ -4624,4 +4624,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} ({1}) όσο κρατιέται</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} ({1}) μέχρι τη διακοπή</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Διακοπή εφέ σκανδάλης ({0})</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Ελάχιστη τιμή εξόδου</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Ρυθμός γυροσκοπίου σε X/Y αριστερού/δεξιού μοχλού: μετά τη νεκρή ζώνη, η ενεργή έξοδος κλιμακώνεται από αυτό το ελάχιστο έως 100%. Το μηδέν παραμένει μηδέν· οι άλλοι τύποι εξόδου δεν αλλάζουν. Ο συνδυασμός πηγών και η διαμόρφωση του μοχλού μπορούν να αλλάξουν την τελική έξοδο.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Επαναφορά ελάχιστης τιμής εξόδου</value></data>
 </root>

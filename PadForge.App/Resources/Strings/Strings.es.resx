@@ -4575,4 +4575,7 @@ Hay una copia de la versión anterior en esta carpeta: {1}</value></data>
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} en {1} mientras se mantiene</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} en {1} hasta detenerlo</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Detener efecto de gatillo en {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Valor mínimo de salida</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Velocidad del giroscopio a X/Y del stick izquierdo/derecho: tras la zona muerta, la salida activa se escala desde este mínimo hasta el 100%. El cero sigue siendo cero; los demás tipos de salida no cambian. La combinación de fuentes y el ajuste del stick pueden modificar la salida final.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Restablecer valor mínimo de salida</value></data>
 </root>

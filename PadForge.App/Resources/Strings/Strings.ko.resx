@@ -4575,4 +4575,7 @@
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{1}에서 {0}, 누르는 동안</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{1}에서 {0}, 정지할 때까지</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>{0}의 트리거 효과 정지</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>최소 출력값</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>자이로 회전 속도를 왼쪽/오른쪽 스틱 X/Y에 매핑할 때, 자이로 데드존을 넘은 활성 출력을 이 최솟값부터 100%까지 재조정합니다. 0은 그대로 유지되며 다른 출력 유형은 바뀌지 않습니다. 소스 결합과 스틱 응답 조정에 따라 최종 출력이 달라질 수 있습니다.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>최소 출력값 초기화</value></data>
 </root>

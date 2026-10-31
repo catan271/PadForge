@@ -4624,4 +4624,7 @@ PadForge వాటిని ఇప్పుడు అన్ఇన్స్టా
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{1} పై {0}, నొక్కి ఉంచినంత సేపు</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{1} పై {0}, ఆపే వరకు</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>{0} పై ట్రిగ్గర్ ఎఫెక్ట్ ఆపు</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>కనిష్ఠ అవుట్‌పుట్ విలువ</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>గైరో భ్రమణ వేగం నుండి ఎడమ/కుడి స్టిక్ X/Yకి: గైరో డెడ్‌జోన్ తర్వాత క్రియాశీల అవుట్‌పుట్ ఈ కనిష్ఠం నుండి 100% వరకు తిరిగి స్కేల్ అవుతుంది. సున్నా సున్నాగానే ఉంటుంది; ఇతర అవుట్‌పుట్ రకాలు మారవు. మూలాల కలయిక మరియు స్టిక్ ప్రతిస్పందన ఆకృతి తుది అవుట్‌పుట్‌ను మార్చవచ్చు.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>కనిష్ఠ అవుట్‌పుట్ విలువను రీసెట్ చేయి</value></data>
 </root>

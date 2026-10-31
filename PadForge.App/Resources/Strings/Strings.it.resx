@@ -4597,4 +4597,7 @@ Vuoi che PadForge li disinstalli ora? L'operazione richiede privilegi elevati e 
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} su {1} finché premuto</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} su {1} finché non viene fermato</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Ferma effetto grilletto su {0}</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Valore minimo di uscita</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Velocità del giroscopio su X/Y dello stick sinistro/destro: dopo la zona morta, l'uscita attiva viene scalata da questo minimo al 100%. Lo zero resta zero; gli altri tipi di uscita non cambiano. La combinazione delle sorgenti e la curva dello stick possono modificare l'uscita finale.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Ripristina il valore minimo di uscita</value></data>
 </root>

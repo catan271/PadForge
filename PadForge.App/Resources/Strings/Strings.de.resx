@@ -4575,4 +4575,7 @@ Sollen sie jetzt deinstalliert werden? Dies erfordert erhöhte Rechte und kann e
   <data name="MacroAction_TriggerEffect_Held_Format" xml:space="preserve"><value>{0} auf {1}, solange gehalten</value></data>
   <data name="MacroAction_TriggerEffect_Sticky_Format" xml:space="preserve"><value>{0} auf {1} bis zum Stoppen</value></data>
   <data name="MacroAction_TriggerEffectStop_Format" xml:space="preserve"><value>Trigger-Effekt auf {0} stoppen</value></data>
+  <data name="Settings_GyroMinimumOutput" xml:space="preserve"><value>Minimaler Ausgabewert</value></data>
+  <data name="Settings_GyroMinimumOutput_Tooltip" xml:space="preserve"><value>Gyro-Drehrate auf X/Y des linken/rechten Sticks: Nach der Gyro-Totzone wird die aktive Ausgabe von diesem Minimum bis 100% skaliert. Null bleibt null; andere Ausgabetypen bleiben unverändert. Quellenkombination und Stick-Kennlinie können die endgültige Ausgabe verändern.</value></data>
+  <data name="Pad_ResetGyroMinimumOutput" xml:space="preserve"><value>Minimalen Ausgabewert zurücksetzen</value></data>
 </root>

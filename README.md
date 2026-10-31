@@ -475,6 +475,8 @@ Reference frames (Local, Player, World). Dual-threshold smoothing. Real-world ca
 
 ![Gyro tab](screenshots/gyro.jpg)
 
+**Minimum output value**, in the Gyro tab's Response Shaping card, compensates for a game's camera joystick deadzone. It defaults to 0% (off). With a 20% minimum, active gyro output starts at 20% and scales to 100%; an otherwise 50% contribution becomes 60%. Motion inside the gyro deadzone stays zero. This applies only to rate gyro mapped to Left/Right Stick X/Y, not mouse aiming, tilt/lean, triggers or motion passthrough. It shapes each gyro contribution before source combination and downstream stick shaping, not the final stick output.
+
 ### Flick Stick, for aiming with a twist.
 
 Flick the right stick to its edge and the camera snaps to that direction, then rotates as you sweep the stick around the rim, while the gyro handles fine aim. PadForge reads flick sources from the right stick, the left stick, or a touchpad, and a Dots per 360° setting corrects games whose camera turns more or less than the flick angle.
