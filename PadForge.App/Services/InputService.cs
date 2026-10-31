@@ -1482,6 +1482,7 @@ namespace PadForge.Services
                 if (!Guid.TryParse(deviceGuid, out var g)) return defaultTuning;
                 return gyroTuningSnapshot.Get((g, slotIndex));
             };
+            PadForge.Engine.Common.Mapping.SourceEvaluator.GyroStickCompanionProvider = InputManager.FindGyroStickCompanion;
 
             // Stick-position provider for Easy Aim gating. The gyro reader
             // passes its slotIndex and the side it needs (issue #120: true =
@@ -2683,6 +2684,7 @@ namespace PadForge.Services
                 PadForge.Engine.Common.Mapping.SourceCoercion.GyroBiasProvider = null;
                 PadForge.Engine.Common.Mapping.SourceCoercion.GyroAuxBiasProvider = null;
                 PadForge.Engine.Common.Mapping.SourceCoercion.GyroTuningProvider = null;
+                PadForge.Engine.Common.Mapping.SourceEvaluator.GyroStickCompanionProvider = null;
                 PadForge.Engine.Common.Mapping.SourceCoercion.SlotStickDeflectionProvider = null;
                 PadForge.Engine.Common.Mapping.SourceCoercion.GravityProvider = null;
                 PadForge.Engine.Common.Mapping.SourceCoercion.GyroTiltGravityProvider = null;

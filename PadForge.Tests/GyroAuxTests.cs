@@ -209,7 +209,7 @@ namespace PadForge.Tests
 
                 // Primary rolling and yawing hard, left half still: the aux
                 // blend must not move, and the primary blend must.
-                var primaryOnly = StateWith(0f, 2.0f, 2.0f, 0f, 0f, 0f);
+                var primaryOnly = StateWith(0f, 2.0f, -2.0f, 0f, 0f, 0f);
                 float auxOnPrimaryMotion = SourceCoercion.EvaluateForBipolarAxisTarget(
                     primaryOnly, Src("Gyro L Horizontal"), 0, false, Dev);
                 float primaryHorizontal = SourceCoercion.EvaluateForBipolarAxisTarget(

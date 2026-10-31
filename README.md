@@ -475,7 +475,9 @@ Reference frames (Local, Player, World). Dual-threshold smoothing. Real-world ca
 
 ![Gyro tab](screenshots/gyro.jpg)
 
-**Minimum output value**, in the Gyro tab's Response Shaping card, compensates for a game's camera joystick deadzone. It defaults to 0% (off). With a 20% minimum, active gyro output starts at 20% and scales to 100%; an otherwise 50% contribution becomes 60%. Motion inside the gyro deadzone stays zero. This applies only to rate gyro mapped to Left/Right Stick X/Y, not mouse aiming, tilt/lean, triggers or motion passthrough. It shapes each gyro contribution before source combination and downstream stick shaping, not the final stick output.
+**Minimum output value**, in the Gyro tab's Response Shaping card, compensates for a game's camera joystick deadzone. It defaults to 0% (off). With a 20% minimum, active gyro magnitude starts at 20% and scales to 100%; an otherwise 50% magnitude becomes 60%. Paired gyro X/Y sources on the same device and sensor scale together, preserving their direction instead of boosting each axis separately. A lone gyro axis uses the same rescale on its own; ambiguous multiple-gyro bindings per axis remain unpaired. Motion inside the gyro deadzone stays zero. This applies only to rate gyro mapped to Left/Right Stick X/Y, not mouse aiming, tilt/lean, triggers or motion passthrough. Other sources and downstream stick shaping can still change the final output.
+
+In Local space, **Gyro Horizontal** continuously combines yaw with sign-corrected roll (`yaw − roll`), honoring each component's invert setting. Opposing contributions cancel smoothly rather than abruptly switching to whichever raw axis is stronger. Its smoothing history is separate from Gyro Yaw/Pitch, so adding a Pitch mapping cannot overwrite the horizontal blend's samples. Player/World projections and raw motion passthrough are unchanged.
 
 ### Flick Stick, for aiming with a twist.
 

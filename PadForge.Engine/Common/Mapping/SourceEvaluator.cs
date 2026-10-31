@@ -22,6 +22,20 @@ namespace PadForge.Engine.Common.Mapping
     /// </summary>
     public static class SourceEvaluator
     {
+        /// <summary>Finds the other stick axis's active gyro source on the same
+        /// device/sensor, before other source contributions are combined.</summary>
+        public static Func<int, string, MappingSource, string, MappingSource> GyroStickCompanionProvider { get; set; }
+
+        internal static (float X, float Y) ApplyGyroMinimumOutput(float x, float y, float minimum)
+        {
+            if (!float.IsFinite(minimum) || minimum <= 0f) return (x, y);
+            float magnitude = MathF.Sqrt(x * x + y * y);
+            if (magnitude == 0f) return (0f, 0f);
+            minimum = Math.Min(minimum, 1f);
+            float scale = (minimum + (1f - minimum) * Math.Min(magnitude, 1f)) / magnitude;
+            return (x * scale, y * scale);
+        }
+
         /// <summary>A blank Direct source occupies a position but reads no input.
         /// So does a blank Toggle or Rapid Trigger, which act on that same read.</summary>
         public static bool IsUnmappedDirect(MappingSource source)
@@ -353,14 +367,28 @@ namespace PadForge.Engine.Common.Mapping
                     // opposite of how gyro is supposed to feel (JSM
                     // MOUSE_JOYSTICK, Steam Input gyro→stick, Splatoon).
                     bool stickTarget = target is "LeftThumbAxisX" or "LeftThumbAxisY" or "RightThumbAxisX" or "RightThumbAxisY";
-                    float v = SourceCoercion.EvaluateForBipolarAxisTarget(state, src, slotIndex, relativeTouchpad, evaluatedDeviceGuid,
-                        applyGyroMinimumOutput: stickTarget);
+                    float v = SourceCoercion.EvaluateForBipolarAxisTarget(state, src, slotIndex, relativeTouchpad, evaluatedDeviceGuid);
                     // Per-axis-frame sign correction — see ShouldFlipForAxisFrame.
                     // This is a SHARED seam (sticks, extended axes, KBM mouse,
                     // and the touchpad-output passthrough all reach it), so the
                     // sign rules MUST stay keyed on (source, target) there.
                     if (ShouldFlipForAxisFrame(src, target))
                         v = -v;
+                    if (stickTarget && v != 0f && SourceCoercion.IsGyroDescriptor(src.Descriptor)
+                        && !SourceCoercion.IsGravityTiltFamilyDescriptor(src.Descriptor))
+                    {
+                        string device = SourceCoercion.EffectiveDeviceGuid(src, evaluatedDeviceGuid);
+                        float minimum = SourceCoercion.GetGyroTuning(device, slotIndex).MinimumOutput01;
+                        if (float.IsFinite(minimum) && minimum > 0f)
+                        {
+                            float other = 0f;
+                            var companion = GyroStickCompanionProvider?.Invoke(slotIndex, target, src, device);
+                            if (companion != null && GateHeld(state, companion, slotIndex, device))
+                                other = SourceCoercion.EvaluateForBipolarAxisTarget(state, companion, slotIndex,
+                                    evaluatedDeviceGuid: device);
+                            v = ApplyGyroMinimumOutput(v, other, minimum).X;
+                        }
+                    }
                     return v;
                 }
             }

@@ -9,8 +9,8 @@ using Xunit;
 namespace PadForge.Tests
 {
     // Locks the yaw/roll invert split (issue #321, discussion #318 by
-    // vlue-c): independent flags per axis, the Horizontal blend following
-    // its dominant component, byte-identical defaults, and the legacy
+    // vlue-c): independent flags per axis, the Horizontal blend inverting
+    // each component independently, and the legacy
     // migration where a profile saved under the combined toggle comes out
     // with BOTH axes inverted.
     [Collection("SettingsManagerStatics")]
@@ -78,17 +78,14 @@ namespace PadForge.Tests
         }
 
         [Fact]
-        public void Horizontal_FollowsTheDominantComponentsFlag()
+        public void Horizontal_InvertsEachContributionBeforeCombining()
         {
-            // Yaw dominant: only the yaw flag matters.
-            float yawDom = Read("Gyro Horizontal", false, false, 1.0f, 0.2f);
-            Assert.Equal(-yawDom, Read("Gyro Horizontal", true, false, 1.0f, 0.2f), 3);
-            Assert.Equal(yawDom, Read("Gyro Horizontal", false, true, 1.0f, 0.2f), 3);
-
-            // Roll dominant: only the roll flag matters.
-            float rollDom = Read("Gyro Horizontal", false, false, 0.2f, 1.0f);
-            Assert.Equal(-rollDom, Read("Gyro Horizontal", false, true, 0.2f, 1.0f), 3);
-            Assert.Equal(rollDom, Read("Gyro Horizontal", true, false, 0.2f, 1.0f), 3);
+            float yaw = Read("Gyro Yaw", false, false, 1.0f, 0.2f);
+            float roll = Read("Gyro Roll", false, false, 1.0f, 0.2f);
+            Assert.Equal(yaw + roll, Read("Gyro Horizontal", false, false, 1.0f, 0.2f), 5);
+            Assert.Equal(-yaw + roll, Read("Gyro Horizontal", true, false, 1.0f, 0.2f), 5);
+            Assert.Equal(yaw - roll, Read("Gyro Horizontal", false, true, 1.0f, 0.2f), 5);
+            Assert.Equal(-yaw - roll, Read("Gyro Horizontal", true, true, 1.0f, 0.2f), 5);
         }
 
         [Fact]

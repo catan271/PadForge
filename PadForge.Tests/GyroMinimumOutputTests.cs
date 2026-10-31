@@ -22,6 +22,7 @@ public class GyroMinimumOutputTests : IDisposable
     private readonly Func<int, bool> _oldEngage = SourceCoercion.AimEngageStateProvider;
     private readonly Func<string, int, (float, float, float)> _oldBias = SourceCoercion.GyroBiasProvider;
     private readonly Func<string, int, (float, float, float)> _oldAuxBias = SourceCoercion.GyroAuxBiasProvider;
+    private readonly Func<int, string, MappingSource, string, MappingSource> _oldCompanion = SourceEvaluator.GyroStickCompanionProvider;
     private SourceCoercion.GyroTuning _tuning = new() { SensH = 1, SensV = 1, MinimumOutput01 = 0.2f };
 
     public GyroMinimumOutputTests()
@@ -31,6 +32,7 @@ public class GyroMinimumOutputTests : IDisposable
         SourceCoercion.AimEngageStateProvider = null;
         SourceCoercion.GyroBiasProvider = null;
         SourceCoercion.GyroAuxBiasProvider = null;
+        SourceEvaluator.GyroStickCompanionProvider = null;
     }
 
     public void Dispose()
@@ -39,6 +41,7 @@ public class GyroMinimumOutputTests : IDisposable
         SourceCoercion.AimEngageStateProvider = _oldEngage;
         SourceCoercion.GyroBiasProvider = _oldBias;
         SourceCoercion.GyroAuxBiasProvider = _oldAuxBias;
+        SourceEvaluator.GyroStickCompanionProvider = _oldCompanion;
     }
 
     private static CustomInputState State(float rate)
@@ -80,7 +83,11 @@ public class GyroMinimumOutputTests : IDisposable
     [InlineData("Gyro L Yaw")]
     [InlineData("Gyro R Yaw")]
     public void RateGyroFamiliesShareTheMinimum(string descriptor)
-        => Assert.Equal(0.6f, Math.Abs(Stick(State(250), Source(descriptor))), 5);
+    {
+        var state = State(250);
+        if (descriptor == "Gyro Horizontal") state.Gyro[2] = 0;
+        Assert.Equal(0.6f, Math.Abs(Stick(state, Source(descriptor))), 5);
+    }
 
     [Theory]
     [InlineData("KbmMouseX")]

@@ -612,8 +612,8 @@ namespace PadForge.Engine.Data
         /// with the threshold subtracted. Default 3°/s.</summary>
         [XmlElement] public string GyroDeadZoneDegPerSec { get; set; } = "3.0";
 
-        /// <summary>Minimum rate-gyro stick contribution, percent (0 = off).
-        /// Nonzero output is rescaled from this minimum to full deflection.</summary>
+        /// <summary>Minimum rate-gyro stick magnitude, percent (0 = off).
+        /// Paired X/Y contributions are rescaled together to preserve direction.</summary>
         [XmlElement] public string GyroMinimumOutput { get; set; } = "0";
 
         /// <summary>Single-pole EMA smoothing alpha (0 = off, 0.95 = max).

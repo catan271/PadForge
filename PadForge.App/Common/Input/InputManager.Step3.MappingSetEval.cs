@@ -4534,6 +4534,53 @@ namespace PadForge.Common.Input
             return FindRowUnderLayer(mappingSet, targetName, activeMask, out suppressed);
         }
 
+        /// <summary>Pairs active rate-gyro sources without including physical
+        /// sticks, other devices/sensors or suppressed shift-layer bindings.</summary>
+        internal static MappingSource FindGyroStickCompanion(int slotIndex, string target,
+            MappingSource source, string deviceGuid)
+        {
+            var sets = SettingsManager.SlotMappingSets;
+            if (sets == null || slotIndex < 0 || slotIndex >= sets.Length) return null;
+            string otherTarget = target switch
+            {
+                "LeftThumbAxisX" => "LeftThumbAxisY",
+                "LeftThumbAxisY" => "LeftThumbAxisX",
+                "RightThumbAxisX" => "RightThumbAxisY",
+                "RightThumbAxisY" => "RightThumbAxisX",
+                _ => null,
+            };
+            if (otherTarget == null) return null;
+            var set = sets[slotIndex];
+            var ownRow = FindActiveRowForTarget(set, target, slotIndex, out _);
+            var otherRow = FindActiveRowForTarget(set, otherTarget, slotIndex, out _);
+
+            MappingSource UniqueGyro(MappingRow row)
+            {
+                MappingSource found = null;
+                var sources = row?.Sources;
+                if (sources == null) return null;
+                int count = sources.Count;
+                for (int i = 0; i < count && i < sources.Count; i++)
+                {
+                    var candidate = sources[i];
+                    if (candidate == null || candidate.Kind is not (null or "" or "Direct" or "RapidTrigger")
+                        || !SourceCoercion.IsGyroDescriptor(candidate.Descriptor)
+                        || SourceCoercion.IsGravityTiltFamilyDescriptor(candidate.Descriptor)
+                        || SourceCoercion.IsGyroAuxDescriptor(candidate.Descriptor) != SourceCoercion.IsGyroAuxDescriptor(source.Descriptor)
+                        || SourceCoercion.IsGyroRDescriptor(candidate.Descriptor) != SourceCoercion.IsGyroRDescriptor(source.Descriptor)
+                        || (!string.IsNullOrEmpty(candidate.DeviceGuid)
+                            && !string.Equals(candidate.DeviceGuid, deviceGuid, System.StringComparison.OrdinalIgnoreCase))
+                        || IsSourceSuppressedPostpone(slotIndex, candidate, stickRead: true)) continue;
+                    // shortcut: one gyro source per device/sensor/axis; aggregate vectors before supporting multi-gyro custom rows.
+                    if (found != null) return null;
+                    found = candidate;
+                }
+                return found;
+            }
+
+            return ReferenceEquals(UniqueGyro(ownRow), source) ? UniqueGyro(otherRow) : null;
+        }
+
         /// <summary>The row <paramref name="targetName"/> reads with the
         /// non-Base <paramref name="layerMask"/> engaged, the lookup
         /// <see cref="FindActiveRowForTarget"/> makes for the layer engaged
